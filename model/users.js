@@ -4,20 +4,20 @@ const bcrypt = require('bcrypt');
 exports.register = async (name, email, password) => {
     const qry = "SELECT * FROM users WHERE email = ?";
     const resp = await queryExecuter(qry, [email]);
-    if(resp.status){
-        if(resp.data === undefined){
+    if (resp.status) {
+        if (resp.data === undefined) {
             const hashedPassword = bcrypt.hashSync(password, 10);
             const query = `INSERT INTO users (name, email, password) VALUES ('${name}', '${email}', '${hashedPassword}')`;
             const response = await queryExecuter(query);
             response.message = "User Successfully Registered";
             return response;
         }
-        else{
+        else {
             resp.message = "User Already Registered";
             return resp;
         }
     }
-    else{
+    else {
         return resp;
     }
 }
@@ -25,15 +25,15 @@ exports.register = async (name, email, password) => {
 exports.login = async (email, password) => {
     const qry = "SELECT * FROM users WHERE email = ?";
     const resp = await queryExecuter(qry, [email]);
-    if(resp.status){
-        if(resp.data === undefined){
+    if (resp.status) {
+        if (resp.data === undefined) {
             resp.message = "No Such User Exists";
             return resp;
         }
-        else{
+        else {
             const hashedPassword = resp.data[0].password;
             const check = bcrypt.compareSync(password, hashedPassword);
-            if(check){
+            if (check) {
                 const accessToken = require('crypto').randomBytes(36).toString('hex');
                 const query = `UPDATE users SET access_token = '${accessToken}' WHERE email = ?`;
                 const response = await queryExecuter(query, [email]);
@@ -42,13 +42,13 @@ exports.login = async (email, password) => {
                 resp.message = "User Logged In Successfully";
                 return resp;
             }
-            else if(!check){
+            else if (!check) {
                 resp.message = "Wrong Password Please Check Again";
                 return resp;
             }
         }
     }
-    else{
+    else {
         return resp;
     }
 }
@@ -62,13 +62,27 @@ exports.logout = async (access_token) => {
 exports.readAll = async () => {
     const query = "SELECT * FROM users where category = 'customer'";
     const response = await queryExecuter(query);
-    if(response.status){
-        if(response.data === undefined){
+    if (response.status) {
+        if (response.data === undefined) {
             response.message = "No Data Found";
         }
         return response;
     }
-    else{
+    else {
+        return response;
+    }
+}
+
+exports.balance = async (email) => {
+    const query = "SELECT * FROM users where email = ?";
+    const response = await queryExecuter(query, [email]);
+    if (response.status) {
+        if (response.data === undefined) {
+            response.message = "No Data Found";
+        }
+        return response;
+    }
+    else {
         return response;
     }
 }

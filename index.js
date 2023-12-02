@@ -4,7 +4,7 @@ const cors = require('cors');
 const app = express();
 
 const allowedOrigins = [
-    
+
     'https://bank-system-binarynumbers.vercel.app',
     'http://127.0.0.1:5500',
     'http://localhost:8000',
@@ -51,6 +51,7 @@ app.get("/customers", userController.getCustomers);
 const actionController = require('./controller/actionController')
 app.post("/action", actionController.action);
 // app.get("/history/:customer_id", refreshRouter);
+app.get("/balance/:email", userController.getBalancee);
 
 
 

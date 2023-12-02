@@ -94,3 +94,28 @@ exports.getCustomers = async (req, res) => {
         res.status(500).json({ status: false, message: customers.actualError });
     }
 }
+
+exports.getBalance = async (req, res) => {
+    // const customers = await user.readAll();
+    // if (customers.status) {
+    //     if (customers.data === undefined) {
+    //         res.status(200).json({ status: true, message: customers.message });
+    //     }
+    //     else {
+    //         res.status(200).json({ status: true, data: customers.data });
+    //     }
+    // }
+    // else {
+    //     res.status(500).json({ status: false, message: customers.actualError });
+    // }
+
+
+    const email = req.params.id;
+    const response = await user.balance(email);
+    if (response) {
+        res.status(200).json({ status: true, message: "Balance Found." })
+    }
+    else {
+        res.status(200).json({ status: false, message: "Something Went Wrong" });
+    }
+}

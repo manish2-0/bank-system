@@ -18,7 +18,7 @@ exports.signup = async (req, res) => {
             res.status(200).json({ status: true, message: response.message });
         }
         else {
-            res.status(500).json({ status: false, message: response.actualError });
+            res.status(500).json({ status: false, message: response.error });
         }
     }
     else if (!flag) {

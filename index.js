@@ -53,7 +53,7 @@ app.post("/action", actionController.action);
 
 
 
-let PORT = 8000;
+let PORT = 3306;
 
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);

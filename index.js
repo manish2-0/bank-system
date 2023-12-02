@@ -4,7 +4,8 @@ const cors = require('cors');
 const app = express();
 
 const allowedOrigins = [
-    'https://www.yoursite.com',
+    
+    'https://bank-system-binarynumbers.vercel.app',
     'http://127.0.0.1:5500',
     'http://localhost:8000',
     'http://localhost:3000'
@@ -39,7 +40,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 // for parsing application/x-www-form-urlencoded
-app.use(express.urlencoded({ extended: true })); 
+app.use(express.urlencoded({ extended: true }));
 
 const userController = require('./controller/userController')
 app.post("/signup", userController.signup);

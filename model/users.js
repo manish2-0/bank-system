@@ -88,7 +88,15 @@ exports.transactionsAll = async (id) => {
 }
 
 exports.balance = async (email) => {
-    const query = "SELECT * FROM users where email = ?";
+    const query = "SELECT * FROM accounts where email = ?";
     const response = await queryExecuter(query, [email]);
-    return response;
+    if (response.status) {
+        if (response.data === undefined) {
+            response.message = "No Data Found";
+        }
+        return response;
+    }
+    else {
+        return response;
+    }
 }

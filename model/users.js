@@ -14,7 +14,7 @@ exports.register = async (name, email, password) => {
         }
         else{
             resp.message = "User Already Registered";
-            return resp
+            return resp;
         }
     }
     else{

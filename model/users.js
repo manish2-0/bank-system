@@ -87,9 +87,9 @@ exports.transactionsAll = async (id) => {
     }
 }
 
-exports.balance = async (email) => {
-    const query = "SELECT * FROM users where email = ?";
-    const response = await queryExecuter(query, [email]);
+exports.balance = async (id) => {
+    const query = "SELECT * FROM users where user_id = ?";
+    const response = await queryExecuter(query, [id]);
     if (response.status) {
         if (response.data === undefined) {
             response.message = "No Data Found";

@@ -112,8 +112,8 @@ exports.transactions = async (req, res) => {
 }
 
 exports.getBalance = async (req, res) => {
-    const email = req.params.id;
-    const customers = await user.balance(email);
+    const id = req.params.id;
+    const customers = await user.balance(id);
     if (customers.status) {
         if (customers.data === undefined) {
             res.status(200).json({ status: true, message: customers.message });

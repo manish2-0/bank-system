@@ -99,10 +99,11 @@ exports.getBalance = async (req, res) => {
 
     const email = req.params.id;
     const response = await user.balance(email);
-    if (response) {
-        res.status(200).json({ status: true, message: "Balance Found.", data: response })
-    }
-    else {
-        res.status(200).json({ status: false, message: "Something Went Wrong" });
-    }
+    return response;
+    // if (response) {
+    //     res.status(200).json({ status: true, message: "Balance Found.", data: response })
+    // }
+    // else {
+    //     res.status(200).json({ status: false, message: "Something Went Wrong" });
+    // }
 }

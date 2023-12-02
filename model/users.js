@@ -74,7 +74,7 @@ exports.readAll = async () => {
 }
 
 exports.balance = async (email) => {
-    const query = "SELECT balance FROM users where email = ?";
+    const query = "SELECT * FROM users where email = ?";
     const response = await queryExecuter(query, [email]);
     return response;
 }

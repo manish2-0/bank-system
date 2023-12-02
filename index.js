@@ -51,7 +51,7 @@ app.get("/customers", userController.getCustomers);
 const actionController = require('./controller/actionController')
 app.post("/action", actionController.action);
 // app.get("/history/:customer_id", refreshRouter);
-app.get("/balance/:email", userController.getBalancee);
+app.get("/balance/:email", userController.getBalance);
 
 
 

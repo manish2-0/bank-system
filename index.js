@@ -57,7 +57,7 @@ app.get("/transactions/:id", userController.transactions);
 
 
 
-let PORT = 3306;
+let PORT = 8000;
 
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);

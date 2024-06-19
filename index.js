@@ -55,6 +55,10 @@ app.get("/balance/:id", userController.getBalance);
 app.get("/transactions/:id", userController.transactions);
 // app.get("/history/:customer_id", refreshRouter);
 
+app.get("/test", (req, res) => {
+    res.status(200).json({ status: true, message: "Active Server" });
+})
+
 
 
 let PORT = 8000;

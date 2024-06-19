@@ -56,6 +56,7 @@ app.get("/transactions/:id", userController.transactions);
 // app.get("/history/:customer_id", refreshRouter);
 
 app.get("/test", (req, res) => {
+    console.log("first test")
     res.status(200).json({ status: true, message: "Active Server" });
 })
 
